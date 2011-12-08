@@ -3,11 +3,14 @@ namespace Zend\View\Helper;
 
 class Flot extends AbstractHelper
 {
+    const FIELD_DATA = 'data';
+
     protected $_datas = array();
 
-    public function addData($data)
+    public function addData($data, $options=array())
     {
-        $this->_datas[] = $data;
+        $options[self::FIELD_DATA] = $data;
+        $this->_datas[] = $options;
     }
 
     public function getDatas()
