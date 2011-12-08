@@ -22,7 +22,14 @@ class FlotTest extends \PHPUnit_Framework_TestCase
                 'label' => 'Test',
             )
         ), $helper->getDatas());
+    }
 
+    public function testRender()
+    {
+        $helper = new Helper\Flot;
+        $helper->addData(array(1, 2, 3), array('label'=>'Test'));
+        $content = $helper->render('#placeholder');
+        $this->assertEquals(trim(file_get_contents(__DIR__ . '/_files/flot.txt')), $content);
     }
 }
 
